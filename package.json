@@ -23,9 +23,6 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/dist packages/*/dist",
-    "taskmaster": "node index.js",
-    "taskmaster:status": "node -e \"const tm = require('./index'); (async () => { const t = new tm(); await t.initialize(); console.log(await t.getStatus()); process.exit(0); })()\"",
-    "taskmaster:plan": "node bin/taskmaster-cli.js plan",
     "setup": "npm install && cd apps/server && npm install && cd ../web && npm install && cd ../../packages/shared && npm install"
   },
   "dependencies": {
