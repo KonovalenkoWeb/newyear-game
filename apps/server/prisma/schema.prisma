@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Player model enligt README-GPT.md
+model Player {
+  id           String    @id @default(cuid())
+  name         String
+  photoDataUrl String
+  score        Int       @default(0)
+  joinedAt     DateTime  @default(now())
+  isConnected  Boolean   @default(true)
+  
+  // Relations
+  messages     Message[]
+  
+  @@map("players")
+}
+
+// Message model för admin->spelare kommunikation
+model Message {
+  id        String    @id @default(cuid())
+  playerId  String
+  player    Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  text      String
+  expiresAt DateTime?
+  createdAt DateTime  @default(now())
+  
+  @@map("messages")
+}
+
+// GameState för att hålla koll på spelstatus
+model GameState {
+  id             Int     @id @default(1)
+  isStarted      Boolean @default(false)
+  currentGameKey String?
+  updatedAt      DateTime @default(now()) @updatedAt
+  
+  @@map("game_state")
+}
