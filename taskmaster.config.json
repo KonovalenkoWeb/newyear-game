@@ -80,6 +80,18 @@
       ]
     }
   },
+  "gitIntegration": {
+    "enabled": true,
+    "autoCommitOnTaskCompletion": true,
+    "branchStrategy": "feature-branches",
+    "conventionalCommits": true,
+    "commitPrefixes": {
+      "FAS 0": "🏗️",
+      "FAS 1": "⚡",
+      "FAS 2": "🎨", 
+      "FAS 3": "🧪"
+    }
+  },
   "notifications": {
     "slack": {
       "enabled": false,
@@ -88,6 +100,11 @@
     "email": {
       "enabled": true,
       "recipients": ["felix@example.com"]
+    },
+    "git": {
+      "enabled": true,
+      "commitMessages": true,
+      "branchUpdates": true
     }
   },
   "logging": {

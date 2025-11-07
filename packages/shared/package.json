@@ -1,0 +1,19 @@
+{
+  "name": "@murderbox/shared",
+  "version": "1.0.0",
+  "description": "Delade typer och socket-kontrakt för Murderbox partyspel",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.2.0"
+  }
+}

@@ -1,16 +1,32 @@
 {
-  "name": "newyear-taskmaster-project",
+  "name": "murderbox-partyspel",
   "version": "1.0.0",
-  "description": "Ett projekt integrerat med Taskmaster AI för automatisk uppgiftshantering",
+  "description": "🎭 Realtidsbaserat partyspel med admin, TV och spelare-vyer",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "taskmaster": "taskmaster-ai --config taskmaster.config.json",
-    "init-tasks": "node scripts/init-tasks.js",
-    "status": "taskmaster-ai status",
-    "plan": "taskmaster-ai plan",
-    "execute": "taskmaster-ai execute"
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "cd apps/server && npm run dev",
+    "dev:web": "cd apps/web && npm run dev",
+    "build": "npm run build:shared && npm run build:server && npm run build:web",
+    "build:shared": "cd packages/shared && npm run build",
+    "build:server": "cd apps/server && npm run build", 
+    "build:web": "cd apps/web && npm run build",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/dist packages/*/dist",
+    "taskmaster": "node index.js",
+    "taskmaster:status": "node -e \"const tm = require('./index'); (async () => { const t = new tm(); await t.initialize(); console.log(await t.getStatus()); process.exit(0); })()\"",
+    "taskmaster:plan": "node bin/taskmaster-cli.js plan",
+    "setup": "npm install && cd apps/server && npm install && cd ../web && npm install && cd ../../packages/shared && npm install"
   },
   "dependencies": {
     "axios": "^1.6.0",
@@ -19,13 +35,23 @@
     "chalk": "^4.1.2",
     "commander": "^11.1.0"
   },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
+    "typescript": "^5.2.0",
+    "vitest": "^0.34.0"
+  },
   "bin": {
     "taskmaster": "./bin/taskmaster-cli.js"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  },
-  "keywords": ["taskmaster", "ai", "automation", "project-management"],
+  "keywords": ["partyspel", "realtime", "socket.io", "react", "murderbox"],
   "author": "Felix Weideryd",
   "license": "MIT"
 }
