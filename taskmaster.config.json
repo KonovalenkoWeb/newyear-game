@@ -1,0 +1,97 @@
+{
+  "projectName": "murderbox-partyspel",
+  "projectType": "fullstack-realtime-game",
+  "aiProvider": "openai",
+  "apiKey": "${TASKMASTER_AI_API_KEY}",
+  "workspaceRoot": "/Users/felixweideryd/Desktop/newyear",
+  "projectContext": {
+    "description": "Realtidsbaserat partyspel (Jackbox-liknande) med tre vyer: /admin, /tv och /spelare",
+    "techStack": ["React", "Vite", "Node.js", "Express", "Socket.IO", "Prisma", "SQLite", "TypeScript", "Tailwind"],
+    "architecture": "monorepo",
+    "phases": ["FAS 0: Monorepo setup", "FAS 1: Server", "FAS 2: Web", "FAS 3: Stabilitet & Test"]
+  },
+  "taskDefinitions": {
+    "autoPlanning": {
+      "enabled": true,
+      "frequency": "daily",
+      "analysisDepth": "deep",
+      "focusAreas": ["monorepo-structure", "socket-io-realtime", "prisma-database", "react-frontend"]
+    },
+    "progressTracking": {
+      "enabled": true,
+      "reportFrequency": "realtime",
+      "milestoneAlerts": true,
+      "phaseTracking": true
+    },
+    "codeAnalysis": {
+      "enabled": true,
+      "languages": ["typescript", "javascript", "prisma", "css"],
+      "qualityChecks": true,
+      "realtimePatterns": ["socket-io", "websockets", "event-handlers"]
+    },
+    "deployment": {
+      "enabled": true,
+      "environment": "development",
+      "autoTesting": true,
+      "testFramework": "vitest"
+    }
+  },
+  "workflows": {
+    "monorepo-setup": {
+      "description": "FAS 0 - Initial monorepo structure",
+      "steps": [
+        "create-folder-structure",
+        "setup-typescript-config",
+        "configure-eslint-prettier",
+        "setup-vitest",
+        "configure-ts-alias"
+      ]
+    },
+    "server-development": {
+      "description": "FAS 1 - Backend server with Socket.IO",
+      "steps": [
+        "setup-express-socketio",
+        "create-prisma-schema",
+        "implement-socket-rooms",
+        "create-event-handlers",
+        "seed-gamestate"
+      ]
+    },
+    "web-development": {
+      "description": "FAS 2 - React frontend with three views",
+      "steps": [
+        "setup-vite-react",
+        "configure-tailwind",
+        "create-routing",
+        "implement-tv-view",
+        "implement-player-view",
+        "implement-admin-view",
+        "setup-socket-provider"
+      ]
+    },
+    "testing-stabilization": {
+      "description": "FAS 3 - Testing and stability features",
+      "steps": [
+        "implement-reconnect-logic",
+        "add-offline-detection",
+        "create-toast-system",
+        "write-unit-tests",
+        "write-integration-tests"
+      ]
+    }
+  },
+  "notifications": {
+    "slack": {
+      "enabled": false,
+      "webhook": ""
+    },
+    "email": {
+      "enabled": true,
+      "recipients": ["felix@example.com"]
+    }
+  },
+  "logging": {
+    "level": "info",
+    "file": "logs/taskmaster.log"
+  }
+}

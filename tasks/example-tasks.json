@@ -1,0 +1,71 @@
+{
+  "projectTasks": [
+    {
+      "id": "task_001",
+      "name": "Projektinitialisering",
+      "description": "Sätt upp grundläggande projektstruktur och beroenden",
+      "priority": "high",
+      "estimatedTime": "2h",
+      "dependencies": [],
+      "automatable": true,
+      "status": "pending"
+    },
+    {
+      "id": "task_002",
+      "name": "Kodkvalitetsanalys",
+      "description": "Kör automatisk kodgranskning och kvalitetskontroller",
+      "priority": "medium",
+      "estimatedTime": "30m",
+      "dependencies": [
+        "task_001"
+      ],
+      "automatable": true,
+      "status": "pending"
+    },
+    {
+      "id": "task_003",
+      "name": "Testning och validering",
+      "description": "Kör alla tester och validera funktionalitet",
+      "priority": "high",
+      "estimatedTime": "1h",
+      "dependencies": [
+        "task_002"
+      ],
+      "automatable": true,
+      "status": "pending"
+    },
+    {
+      "id": "task_004",
+      "name": "Dokumentationsuppdatering",
+      "description": "Uppdatera dokumentation baserat på ändringar",
+      "priority": "medium",
+      "estimatedTime": "45m",
+      "dependencies": [
+        "task_003"
+      ],
+      "automatable": true,
+      "status": "pending"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "daily-maintenance",
+      "description": "Daglig underhållsrutin",
+      "schedule": "0 9 * * *",
+      "tasks": [
+        "task_002",
+        "task_003"
+      ]
+    },
+    {
+      "name": "release-preparation",
+      "description": "Förbered för release",
+      "trigger": "manual",
+      "tasks": [
+        "task_002",
+        "task_003",
+        "task_004"
+      ]
+    }
+  ]
+}

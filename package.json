@@ -1,0 +1,31 @@
+{
+  "name": "newyear-taskmaster-project",
+  "version": "1.0.0",
+  "description": "Ett projekt integrerat med Taskmaster AI för automatisk uppgiftshantering",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "taskmaster": "taskmaster-ai --config taskmaster.config.json",
+    "init-tasks": "node scripts/init-tasks.js",
+    "status": "taskmaster-ai status",
+    "plan": "taskmaster-ai plan",
+    "execute": "taskmaster-ai execute"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "inquirer": "^9.2.0",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0"
+  },
+  "bin": {
+    "taskmaster": "./bin/taskmaster-cli.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["taskmaster", "ai", "automation", "project-management"],
+  "author": "Felix Weideryd",
+  "license": "MIT"
+}
