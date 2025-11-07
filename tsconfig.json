@@ -58,8 +58,9 @@
     "**/*.spec.ts"
   ],
   "references": [
-    { "path": "./packages/shared" },
-    { "path": "./apps/server" },
-    { "path": "./apps/web" }
+    { "path": "./packages/shared" }
+    // TODO: Lägg till server och web när de skapas i FAS 1 & 2
+    // { "path": "./apps/server" },
+    // { "path": "./apps/web" }
   ]
 }

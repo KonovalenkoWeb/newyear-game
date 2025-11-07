@@ -14,7 +14,7 @@
     "dev:web": "cd apps/web && npm run dev",
     "build": "npm run build:shared && npm run build:server && npm run build:web",
     "build:shared": "cd packages/shared && npm run build",
-    "build:server": "cd apps/server && npm run build", 
+    "build:server": "cd apps/server && npm run build",
     "build:web": "cd apps/web && npm run build",
     "test": "vitest",
     "test:watch": "vitest --watch",
@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "axios": "^1.6.0",
-    "dotenv": "^16.3.1",
-    "inquirer": "^9.2.0",
     "chalk": "^4.1.2",
-    "commander": "^11.1.0"
+    "commander": "^11.1.0",
+    "dotenv": "^16.3.1",
+    "inquirer": "^9.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.8.0",
@@ -45,13 +45,18 @@
     "eslint-plugin-prettier": "^5.0.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
-    "typescript": "^5.2.0",
-    "vitest": "^0.34.0"
+    "typescript": "^5.2.0"
   },
   "bin": {
     "taskmaster": "./bin/taskmaster-cli.js"
   },
-  "keywords": ["partyspel", "realtime", "socket.io", "react", "murderbox"],
+  "keywords": [
+    "partyspel",
+    "realtime",
+    "socket.io",
+    "react",
+    "murderbox"
+  ],
   "author": "Felix Weideryd",
   "license": "MIT"
 }

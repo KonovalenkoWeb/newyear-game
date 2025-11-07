@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitest/config';
-import { resolve } from 'path';
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   test: {
@@ -10,9 +10,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@shared': resolve(__dirname, 'packages/shared/src'),
-      '@server': resolve(__dirname, 'apps/server/src'),
-      '@web': resolve(__dirname, 'apps/web/src'),
+      '@shared': new URL('./packages/shared/src', import.meta.url).pathname,
+      // TODO: Lägg till när server och web skapas
+      // '@server': new URL('./apps/server/src', import.meta.url).pathname,
+      // '@web': new URL('./apps/web/src', import.meta.url).pathname,
     },
   },
 });
